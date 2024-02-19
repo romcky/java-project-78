@@ -1,5 +1,6 @@
 plugins {
-    id("java")
+    application
+    checkstyle
 }
 
 group = "hexlet.code"
@@ -10,10 +11,29 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    implementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
 }
 
-tasks.test {
-    useJUnitPlatform()
+application {
+    mainClass = "hexlet.code.App"
 }
+
+testing {
+    suites {
+        val test by getting(JvmTestSuite::class) {
+            useJUnitJupiter()
+        }
+    }
+}
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(20);
+    }
+}
+
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
+}
+
