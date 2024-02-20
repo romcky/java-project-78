@@ -1,15 +1,6 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-
-public class StringSchema {
-    List<Predicate<String>> checks;
-
-    public StringSchema() {
-        this.checks = new ArrayList<>();
-    }
+public class StringSchema extends BaseSchema<String> {
 
     public StringSchema required() {
         checks.add(str -> !str.isEmpty());
@@ -24,13 +15,5 @@ public class StringSchema {
     public StringSchema contains(String substr) {
         checks.add(str -> str.contains(substr));
         return this;
-    }
-
-    public boolean isValid(String str) {
-        if (checks.isEmpty()) {
-            return true;
-        } else {
-            return str != null && checks.stream().allMatch(check -> check.test(str));
-        }
     }
 }
