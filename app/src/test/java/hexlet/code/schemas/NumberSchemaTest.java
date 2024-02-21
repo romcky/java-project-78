@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class NumberSchemaTest {
     @Test
-    public void allTest() {
+    public void test() {
         var numberSchema = new NumberSchema();
         Assertions.assertTrue(numberSchema.isValid(null));
         numberSchema.positive();

@@ -1,28 +1,20 @@
 package hexlet.code.schemas;
 
-public class NumberSchema extends BaseSchema<Number> {
+public class NumberSchema extends BaseSchema<Integer> {
 
-    private boolean requiredFlag;
 
     public NumberSchema required() {
-        requiredFlag = true;
+        setRequired();
         return this;
     }
 
     public NumberSchema positive() {
-        checks.add(num -> num.doubleValue() > .0);
+        addCheck(num -> num > 0);
         return this;
     }
 
-    public NumberSchema range(Number min, Number max) {
-        checks.add(num -> num.doubleValue() >= min.doubleValue()
-                && num.doubleValue() <= max.doubleValue());
+    public NumberSchema range(Integer min, Integer max) {
+        addCheck(num -> num >= min && num <= max);
         return this;
     }
-
-    @Override
-    public boolean isValid(Number num) {
-        return !requiredFlag || super.isValid(num);
-    }
-
 }

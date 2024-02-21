@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class StringSchemaTest {
     @Test
-    public void allTest() {
+    public void test() {
         var stringSchema = new StringSchema();
         Assertions.assertTrue(stringSchema.isValid(null));
         stringSchema.required();
