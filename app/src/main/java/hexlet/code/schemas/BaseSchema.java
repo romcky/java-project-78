@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class BaseSchema<T> {
+public abstract class BaseSchema<T> {
     private final List<Predicate<T>> checks = new ArrayList<Predicate<T>>();
     private boolean required;
 
@@ -12,9 +12,11 @@ public class BaseSchema<T> {
         checks.add(check);
     }
 
-    public boolean isValid(T obj) {
+    public boolean runAllChecks(T obj) {
         return !required || checks.stream().allMatch(check -> check.test(obj));
     }
+
+    abstract boolean isValid(Object obj);
 
     public void setRequired() {
         required = true;

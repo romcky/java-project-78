@@ -17,4 +17,12 @@ public class NumberSchema extends BaseSchema<Integer> {
         addCheck(num -> num >= min && num <= max);
         return this;
     }
+
+    @Override
+    public boolean isValid(Object object) {
+        if (object instanceof Integer) {
+            return runAllChecks((Integer)object);
+        }
+        return false;
+    }
 }

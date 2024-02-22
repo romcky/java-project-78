@@ -17,4 +17,12 @@ public class StringSchema extends BaseSchema<String> {
         addCheck(str -> str.contains(substr));
         return this;
     }
+
+    @Override
+    public boolean isValid(Object object) {
+        if (object instanceof String) {
+            return runAllChecks((String)object);
+        }
+        return false;
+    }
 }

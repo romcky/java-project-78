@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.Map;
 
 public final class MapSchema extends
-        BaseSchema<Map<String, ?>> {
+        BaseSchema<Map<?, ?>> {
 
     public MapSchema required() {
         setRequired();
@@ -15,12 +15,19 @@ public final class MapSchema extends
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema<?>> schema) {
+    @Override
+    public boolean isValid(Object object) {
+        if (object instanceof Map) {
+            return runAllChecks((Map)object);
+        }
+        return false;
+    }
+
+
+    public<T> MapSchema shape(Map<String, BaseSchema<T>> schema) {
+        setRequired();
         addCheck(map -> {
             for (var entry : schema.entrySet()) {
-                // у нас мама со свойствами разных типов (String, String/Number)
-                // и мапа валидцаии с валидаторами разных типов (String, String/Number)
-                // как их совмесить чтоб пройти проверку типов?
                 if (!schema.get(entry.getKey()).isValid(map.get(entry.getKey()))) {
                     return false;
                 }
