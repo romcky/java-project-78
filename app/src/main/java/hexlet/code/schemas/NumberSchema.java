@@ -21,7 +21,7 @@ public class NumberSchema extends BaseSchema<Integer> {
     @Override
     public boolean isValid(Object object) {
         if (object instanceof Integer) {
-            return runAllChecks((Integer)object);
+            return runAllChecks((Integer) object);
         }
         return false;
     }

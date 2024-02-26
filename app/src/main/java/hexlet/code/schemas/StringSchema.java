@@ -21,7 +21,7 @@ public class StringSchema extends BaseSchema<String> {
     @Override
     public boolean isValid(Object object) {
         if (object instanceof String) {
-            return runAllChecks((String)object);
+            return runAllChecks((String) object);
         }
         return false;
     }

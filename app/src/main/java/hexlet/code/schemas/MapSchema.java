@@ -18,13 +18,13 @@ public final class MapSchema extends
     @Override
     public boolean isValid(Object object) {
         if (object instanceof Map) {
-            return runAllChecks((Map)object);
+            return runAllChecks((Map) object);
         }
         return false;
     }
 
 
-    public<T> MapSchema shape(Map<String, BaseSchema<T>> schema) {
+    public <T> MapSchema shape(Map<String, BaseSchema<T>> schema) {
         setRequired();
         addCheck(map -> {
             for (var entry : schema.entrySet()) {
