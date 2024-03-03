@@ -19,10 +19,11 @@ public class StringSchema extends BaseSchema<String> {
     }
 
     @Override
-    public boolean isValid(Object object) {
-        if (object instanceof String) {
-            return runAllChecks((String) object);
+    public String getTypedObject(Object obj) {
+        if (obj instanceof String) {
+            return (String) obj;
+        } else {
+            throw new RuntimeException();
         }
-        return false;
     }
 }

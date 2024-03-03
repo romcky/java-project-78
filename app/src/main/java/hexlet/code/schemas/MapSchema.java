@@ -16,13 +16,13 @@ public final class MapSchema extends
     }
 
     @Override
-    public boolean isValid(Object object) {
-        if (object instanceof Map) {
-            return runAllChecks((Map) object);
+    public Map<?, ?> getTypedObject(Object obj) {
+        if (obj instanceof Map) {
+            return (Map) obj;
+        } else {
+            throw new RuntimeException();
         }
-        return false;
     }
-
 
     public <T> MapSchema shape(Map<String, BaseSchema<T>> schema) {
         setRequired();

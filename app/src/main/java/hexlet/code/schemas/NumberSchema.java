@@ -19,10 +19,12 @@ public class NumberSchema extends BaseSchema<Integer> {
     }
 
     @Override
-    public boolean isValid(Object object) {
+    public Integer getTypedObject(Object object) {
         if (object instanceof Integer) {
-            return runAllChecks((Integer) object);
+            return (Integer) object;
+        } else {
+            throw new RuntimeException();
         }
-        return false;
     }
+
 }

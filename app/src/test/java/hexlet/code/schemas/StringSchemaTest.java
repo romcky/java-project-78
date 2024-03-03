@@ -7,13 +7,13 @@ public class StringSchemaTest {
     @Test
     public void test() {
         var stringSchema = new StringSchema();
-        Assertions.assertTrue(stringSchema.runAllChecks(null));
+        Assertions.assertTrue(stringSchema.isValid(null));
         stringSchema.required();
-        Assertions.assertFalse(stringSchema.runAllChecks(null));
-        Assertions.assertFalse(stringSchema.runAllChecks(""));
-        Assertions.assertTrue(stringSchema.runAllChecks("One"));
+        Assertions.assertFalse(stringSchema.isValid(null));
+        Assertions.assertFalse(stringSchema.isValid(""));
+        Assertions.assertTrue(stringSchema.isValid("One"));
         stringSchema.minLength(5);
-        Assertions.assertFalse(stringSchema.runAllChecks("One"));
-        Assertions.assertTrue(stringSchema.runAllChecks("OneAndTwo"));
+        Assertions.assertFalse(stringSchema.isValid("One"));
+        Assertions.assertTrue(stringSchema.isValid("OneAndTwo"));
     }
 }

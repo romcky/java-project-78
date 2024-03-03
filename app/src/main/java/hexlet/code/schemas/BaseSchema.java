@@ -12,14 +12,20 @@ public abstract class BaseSchema<T> {
         checks.add(check);
     }
 
-    public boolean runAllChecks(T obj) {
-        return !required || checks.stream().allMatch(check -> check.test(obj));
-    }
+    public abstract T getTypedObject(Object obj);
 
-    abstract boolean isValid(Object obj);
+    public boolean isValid(Object obj) {
+        if (!required) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        return checks.stream().allMatch(check -> check.test(getTypedObject(obj)));
+    }
 
     public void setRequired() {
         required = true;
-        checks.add(0, obj -> obj != null);
+//        checks.add(0, obj -> obj != null);
     }
 }

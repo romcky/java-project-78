@@ -10,16 +10,16 @@ public class MapSchemaTest {
     @Test
     public void test() {
         var mapSchema = new MapSchema();
-        Assertions.assertTrue(mapSchema.runAllChecks(null));
+        Assertions.assertTrue(mapSchema.isValid(null));
         mapSchema.required();
-        Assertions.assertFalse(mapSchema.runAllChecks(null));
-        Assertions.assertTrue(mapSchema.runAllChecks(new HashMap<>()));
+        Assertions.assertFalse(mapSchema.isValid(null));
+        Assertions.assertTrue(mapSchema.isValid(new HashMap<>()));
         var data = new HashMap<String, String>();
         data.put("key1", "value1");
-        Assertions.assertTrue(mapSchema.runAllChecks(data));
+        Assertions.assertTrue(mapSchema.isValid(data));
         mapSchema.sizeof(2);
-        Assertions.assertFalse(mapSchema.runAllChecks(data));
+        Assertions.assertFalse(mapSchema.isValid(data));
         data.put("key2", "value2");
-        Assertions.assertTrue(mapSchema.runAllChecks(data));
+        Assertions.assertTrue(mapSchema.isValid(data));
     }
 }
