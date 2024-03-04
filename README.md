@@ -23,7 +23,7 @@ stringSchema.minLength(length); \
 Задать проверку наличия подстроки: \
 stringSchema.contains(substring); \
 Применить проверки к нужной строке: \
-stringSchema.isValid(string); \
+stringSchema.isValid(string);
 
 ## Числа:
 Создать валидатор для чисел: \
@@ -35,7 +35,7 @@ numberSchema.positive(); \
 Задать проверку вхождения числа в диапазон: \
 numberSchema.range(min, max); \
 Применить проверки к нужному числу: \
-numberSchema.isValid(number); \
+numberSchema.isValid(number);
 
 ## Ассоциативные массивы:
 Создать валидатор для ассоциативного массива: \
@@ -47,5 +47,5 @@ mapSchema.sizeof(size); \
 Задать проверку нужных полей нужными валидаторами: \
 mapSchema.shape(mapOfSchemas); \
 Применить проверки к нужному ассоциативному массиву: \
-mapSchema.isValid(map); \
+mapSchema.isValid(map);
 
