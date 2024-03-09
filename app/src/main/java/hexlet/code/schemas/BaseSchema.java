@@ -14,14 +14,14 @@ public abstract class BaseSchema<T> {
 
     public abstract T getTypedObject(Object obj);
 
-    public final boolean isValid(Object obj) {
+    public final boolean isValid(T obj) {
         if (!required) {
             return true;
         }
         if (obj == null) {
             return false;
         }
-        return checks.stream().allMatch(check -> check.test(getTypedObject(obj)));
+        return checks.stream().allMatch(check -> check.test(obj));
     }
 
     public final void setRequired() {
