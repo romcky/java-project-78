@@ -28,7 +28,7 @@ public final class MapSchema extends
         setRequired();
         addCheck(map -> {
             for (var entry : schema.entrySet()) {
-                if (!schema.get(entry.getKey()).isValid(map.get(entry.getKey()))) {
+                if (!schema.get(entry.getKey()).isValid((T)map.get(entry.getKey()))) {
                     return false;
                 }
             }
