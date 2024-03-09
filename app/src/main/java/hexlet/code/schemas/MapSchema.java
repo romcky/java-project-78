@@ -24,13 +24,13 @@ public final class MapSchema extends
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public <T> MapSchema shape(Map<String, BaseSchema<T>> schema) {
+        
+    public MapSchema shape(Map<String, BaseSchema<?>> schema) {
         setRequired();
         addCheck(map -> {
             for (var entry : schema.entrySet()) {
                 Object obj = map.get(entry.getKey());
-                if (!schema.get(entry.getKey()).isValid((T) obj)) {
+                if (!schema.get(entry.getKey()).isValid(obj)) {
                     return false;
                 }
             }
