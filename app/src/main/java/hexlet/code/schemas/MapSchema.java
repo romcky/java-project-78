@@ -15,16 +15,6 @@ public final class MapSchema extends
         return this;
     }
 
-    @Override
-    public Map<?, ?> getTypedObject(Object obj) {
-        if (obj instanceof Map) {
-            return (Map) obj;
-        } else {
-            throw new RuntimeException();
-        }
-    }
-
-        
     @SuppressWarnings("unchecked")
     public <T> MapSchema shape(Map<String, BaseSchema<T>> schema) {
         setRequired();

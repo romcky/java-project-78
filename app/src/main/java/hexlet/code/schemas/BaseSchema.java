@@ -12,8 +12,6 @@ public abstract class BaseSchema<T> {
         checks.add(check);
     }
 
-    public abstract T getTypedObject(Object obj);
-
     public final boolean isValid(T obj) {
         if (!required) {
             return true;

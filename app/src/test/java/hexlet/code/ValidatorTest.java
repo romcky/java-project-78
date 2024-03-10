@@ -1,6 +1,6 @@
-package hexlet.code.schemas.hexlet.code;
+package hexlet.code;
 
-import hexlet.code.Validator;
+
 import hexlet.code.schemas.BaseSchema;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

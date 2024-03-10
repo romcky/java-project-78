@@ -17,13 +17,4 @@ public final class StringSchema extends BaseSchema<String> {
         addCheck(str -> str.contains(substr));
         return this;
     }
-
-    @Override
-    public String getTypedObject(Object obj) {
-        if (obj instanceof String) {
-            return (String) obj;
-        } else {
-            throw new RuntimeException();
-        }
-    }
 }
